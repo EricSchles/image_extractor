@@ -11,6 +11,12 @@ def extract(filename):
     shutil.copy(filename,foldername+"/"+filename)
     os.chdir(foldername)
     call(["pdfimages","-j",filename,foldername])
+    pbm = glob("*.pbm")
+    ppm = glob("*.ppm")
+    for elem in ppm:
+        os.remove(elem)
+    for elem in pbm:
+        os.remove(elem)
     os.chdir("../")
 
 if __name__ == '__main__':
